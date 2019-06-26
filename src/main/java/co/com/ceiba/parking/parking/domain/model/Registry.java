@@ -20,9 +20,10 @@ public class Registry {
     private String displacement;
     private Date  dateArrival;
     private Date dateDeparture;
+    private long value;
 
 
-    public Registry(Integer id, String vehicleType, String licensePlate, String displacement, Date dateArrival, Date dateDeparture) {
+    public Registry(Integer id, String vehicleType, String licensePlate, String displacement, Date dateArrival, Date dateDeparture, long value) {
         ValidatorArgument.validateLicencePlate(licensePlate, MESSAGE_LICENCEPLATE_REQUIRED);
         ValidatorArgument.validateNullVehicleType(vehicleType, MESSAGE_VEHICLETYPE_REQUIRED);
 
@@ -40,6 +41,7 @@ public class Registry {
         this.displacement = displacement;
         this.dateArrival = dateArrival;
         this.dateDeparture = dateDeparture;
+        this.value = value;
     }
 
     public Integer getId() {
@@ -70,4 +72,13 @@ public class Registry {
     public void setDateDeparture(Date dateDeparture) {
         this.dateDeparture = dateDeparture;
     }
+
+    public long getValue() {
+        return value;
+    }
+
+    public void setValue(long valor) {
+        this.value = value;
+    }
+
 }

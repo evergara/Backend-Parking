@@ -13,6 +13,7 @@ public class RegistryTestDataBuilder {
     private String displacement;
     private Date dateArrival;
     private Date dateDeparture;
+    private long value;
 
     public  RegistryTestDataBuilder(){
         this.id = 1;
@@ -21,6 +22,7 @@ public class RegistryTestDataBuilder {
         this.displacement = null;
         this.dateArrival = new Date();
         this.dateDeparture = null;
+        this.value = 0;
     }
 
     public RegistryTestDataBuilder withID(Integer id) {
@@ -52,8 +54,12 @@ public class RegistryTestDataBuilder {
         this.dateDeparture = dateDeparture;
         return this;
     }
+    public RegistryTestDataBuilder withValue(long value) {
+        this.value = value;
+        return this;
+    }
 
     public Registry build(){
-        return new Registry(id, vehicleType, licensePlate, displacement, dateArrival, dateDeparture);
+        return new Registry(id, vehicleType, licensePlate, displacement, dateArrival, dateDeparture, value);
     }
 }
