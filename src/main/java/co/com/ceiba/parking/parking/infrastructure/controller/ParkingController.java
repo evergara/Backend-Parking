@@ -1,28 +1,28 @@
 package co.com.ceiba.parking.parking.infrastructure.controller;
 
 import co.com.ceiba.parking.parking.application.command.RegisterCommand;
-import co.com.ceiba.parking.parking.application.command.handler.RegisterHandler;
+import co.com.ceiba.parking.parking.application.command.handler.RegisterEntryHandler;
+import co.com.ceiba.parking.parking.application.command.handler.RegisterExitHandler;
 import co.com.ceiba.parking.parking.application.consulta.RegisterListHandler;
 import co.com.ceiba.parking.parking.domain.model.Registry;
-import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-import java.util.Collection;
 
 @RestController
 @RequestMapping("/Parking")
 @CrossOrigin("*")
 public class ParkingController {
 
-    private RegisterHandler registerHandler;
+    private RegisterEntryHandler registerHandler;
+    private RegisterExitHandler registerExitHandler;
     private RegisterListHandler registerListHandler;
 
     @Autowired
-    public ParkingController(RegisterHandler registerHandler,RegisterListHandler registerListHandler){
+    public ParkingController(RegisterEntryHandler registerHandler, RegisterExitHandler registerExitHandler, RegisterListHandler registerListHandler){
         this.registerHandler = registerHandler;
+        this.registerExitHandler = registerExitHandler;
         this.registerListHandler = registerListHandler;
     }
 
@@ -32,8 +32,12 @@ public class ParkingController {
     }
 
     @PostMapping
-    public void created(@RequestBody RegisterCommand registerCommand) {
+    public void getInto(@RequestBody RegisterCommand registerCommand) {
         this.registerHandler.SetEntry(registerCommand);
     }
 
+    @PutMapping("/{licensePlate}")
+    public void getOut(@PathVariable("licensePlate") String licensePlate) {
+        this.registerExitHandler.SetExit(licensePlate);
+    }
 }

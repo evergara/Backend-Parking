@@ -1,18 +1,10 @@
 package co.com.ceiba.parking.parking.domain.model;
 
+import co.com.ceiba.parking.parking.domain.util.Parametrization;
+
 import java.util.Date;
 
 public class Registry {
-
-    private static final String MESSAGE_LICENCEPLATE_REQUIRED = "La placa es un dato requerido.";
-    private static final String MESSAGE_VEHICLETYPE_REQUIRED = "El campo tipo vehiculo es querido.";
-    private static final String MESSAGE_VEHICLETYPE_WRONG_DATA = "El campo tipo vehiculo no tiene valor (%S) valido.";
-    private static final String MESSAGE_DISPLACEMENT_REQUIRED = "El campo cilindraje es requerido.";
-    private static final String MESSAGE_DISPLACEMENT_WRONG_DATA  = "El campo cilindraje debe ser numerico.";
-
-    private static final String VEHICLETYPE_VALUE_CAR = "CAR";
-    private static final String VEHICLETYPE_VALUE_MOTORCYCLE = "MOTORCYCLE";
-
 
     private Integer id;
     private String vehicleType;
@@ -24,15 +16,15 @@ public class Registry {
 
 
     public Registry(Integer id, String vehicleType, String licensePlate, String displacement, Date dateArrival, Date dateDeparture, long value) {
-        ValidatorArgument.validateLicencePlate(licensePlate, MESSAGE_LICENCEPLATE_REQUIRED);
-        ValidatorArgument.validateNullVehicleType(vehicleType, MESSAGE_VEHICLETYPE_REQUIRED);
+        ValidatorArgument.validateLicencePlate(licensePlate, Parametrization.MESSAGE_LICENCEPLATE_REQUIRED);
+        ValidatorArgument.validateNullVehicleType(vehicleType, Parametrization. MESSAGE_VEHICLETYPE_REQUIRED);
 
-        if(!vehicleType.contentEquals(VEHICLETYPE_VALUE_CAR) && !vehicleType.contentEquals(VEHICLETYPE_VALUE_MOTORCYCLE)) {
-            ValidatorArgument.validateVehicleTypeWrongDate( String.format(MESSAGE_VEHICLETYPE_WRONG_DATA, vehicleType));
+        if(!vehicleType.contentEquals(Parametrization.VEHICLETYPE_VALUE_CAR) && !vehicleType.contentEquals(Parametrization.VEHICLETYPE_VALUE_MOTORCYCLE)) {
+            ValidatorArgument.validateVehicleTypeWrongDate(String.format(Parametrization.MESSAGE_VEHICLETYPE_WRONG_DATA, vehicleType));
         }
-        if (vehicleType.equalsIgnoreCase(VEHICLETYPE_VALUE_MOTORCYCLE)) {
-            ValidatorArgument.validateDisplacementRequired(displacement, MESSAGE_DISPLACEMENT_REQUIRED);
-            ValidatorArgument.validateDisplacementNumber(displacement, MESSAGE_DISPLACEMENT_WRONG_DATA);
+        if (vehicleType.equalsIgnoreCase(Parametrization.VEHICLETYPE_VALUE_MOTORCYCLE)) {
+            ValidatorArgument.validateDisplacementRequired(displacement, Parametrization.MESSAGE_DISPLACEMENT_REQUIRED);
+            ValidatorArgument.validateDisplacementNumber(displacement, Parametrization.MESSAGE_DISPLACEMENT_WRONG_DATA);
         }
 
         this.id = id;
@@ -77,7 +69,7 @@ public class Registry {
         return value;
     }
 
-    public void setValue(long valor) {
+    public void setValue(long value) {
         this.value = value;
     }
 

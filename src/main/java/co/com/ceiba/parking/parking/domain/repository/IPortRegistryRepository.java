@@ -4,22 +4,14 @@ import co.com.ceiba.parking.parking.domain.model.Registry;
 
 import java.util.List;
 
-public interface IRegistryRepository {
+public interface IPortRegistryRepository {
 
     /**
      *Registra el ingreso de un vehiculo
      *
      * @param  Objeto que tiene la informacion del registro a crear
      */
-     void create(Registry registry);
-
-    /**
-     *Actualizar el registro un vehiculo
-     *
-     * @param  Objeto que tiene la informacion del registro a actualizar
-     */
-
-    void update(Registry registry);
+     void saveRegistro(Registry registry);
 
     /**
      * Permite listar los registros de vehiculos

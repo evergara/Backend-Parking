@@ -1,1 +1,1 @@
-insert into registry(id, date_arrival, displacement, license_plate, vehicle_type,value) values(10,'2019-06-01T10:25:00','','123B', 'CAR',0)
+insert into registry(id, date_arrival, displacement, license_plate, vehicle_type,value) values(1,'2019-06-01T10:25:00','','123B', 'CAR',0)

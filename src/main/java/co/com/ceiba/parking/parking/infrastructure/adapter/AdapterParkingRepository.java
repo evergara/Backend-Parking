@@ -1,17 +1,16 @@
 package co.com.ceiba.parking.parking.infrastructure.adapter;
 
 import co.com.ceiba.parking.parking.domain.model.Registry;
-import co.com.ceiba.parking.parking.domain.repository.IRegistryRepository;
+import co.com.ceiba.parking.parking.domain.repository.IPortRegistryRepository;
 import co.com.ceiba.parking.parking.infrastructure.entity.RegistryEntity;
 import co.com.ceiba.parking.parking.infrastructure.repository.IRepositoryParkingJPA;
 import co.com.ceiba.parking.parking.infrastructure.mapper.RegistryMapper;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
 
 @Repository
-public class AdapterParkingRepository implements IRegistryRepository {
+public class AdapterParkingRepository implements IPortRegistryRepository {
 
     private IRepositoryParkingJPA repositoryParkingJPA;
     private RegistryMapper registryMapper;
@@ -22,13 +21,7 @@ public class AdapterParkingRepository implements IRegistryRepository {
     }
 
     @Override
-    public void create(Registry registry) {
-        RegistryEntity registryEntity = repositoryParkingJPA.save(registryMapper.convertToEntity(registry));
-        this.registryMapper.convertToDomain(registryEntity);
-    }
-
-    @Override
-    public void update(Registry registry) {
+    public void saveRegistro(Registry registry) {
         RegistryEntity registryEntity = repositoryParkingJPA.save(registryMapper.convertToEntity(registry));
         this.registryMapper.convertToDomain(registryEntity);
     }

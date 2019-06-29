@@ -1,22 +1,20 @@
 package co.com.ceiba.parking.parking.application.consulta;
 
-import co.com.ceiba.parking.parking.application.command.RegisterCommand;
 import co.com.ceiba.parking.parking.domain.model.Registry;
-import co.com.ceiba.parking.parking.domain.repository.IRegistryRepository;
-import org.springframework.stereotype.Component;
+import co.com.ceiba.parking.parking.domain.service.RegisterListService;
 
 import java.util.List;
 
 
 public class RegisterListHandler {
 
-    private final IRegistryRepository registryRepository;
+    private final RegisterListService registerListService;
 
-    public RegisterListHandler(IRegistryRepository registryRepository){
-        this.registryRepository = registryRepository;
+    public RegisterListHandler(RegisterListService registerListService){
+        this.registerListService = registerListService;
     }
 
     public List<Registry> listRegister(){
-        return this.registryRepository.list();
+        return this.registerListService.listRegister();
     }
 }

@@ -11,10 +11,10 @@ public interface IRepositoryParkingJPA extends CrudRepository<RegistryEntity, In
     @Query("SELECT COUNT(id) FROM RegistryEntity r WHERE r.vehicleType = :vehicleType AND r.dateDeparture IS NULL")
     int countVehicleType(@Param("vehicleType") String vehicleType);
 
-    @Query("SELECT r FROM RegistryEntity r WHERE r.licensePlate = :licensePlate")
+    @Query("SELECT r FROM RegistryEntity r WHERE r.licensePlate = :licensePlate AND r.dateDeparture IS NULL")
     RegistryEntity findByLicensePlate(@Param("licensePlate") String licensePlate);
 
-    @Query("SELECT r FROM RegistryEntity r WHERE r.dateDeparture IS NULL")
+    @Query("SELECT r FROM RegistryEntity r")
     List<RegistryEntity> listAll();
 
     @Query("SELECT CASE WHEN COUNT(r.id) > 0 THEN true ELSE false END FROM RegistryEntity r WHERE r.licensePlate = :licensePlate AND r.dateDeparture IS NULL")

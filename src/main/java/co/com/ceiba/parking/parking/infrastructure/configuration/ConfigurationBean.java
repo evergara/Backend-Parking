@@ -1,25 +1,41 @@
 package co.com.ceiba.parking.parking.infrastructure.configuration;
-import co.com.ceiba.parking.parking.application.command.handler.RegisterHandler;
+import co.com.ceiba.parking.parking.application.command.handler.RegisterEntryHandler;
+import co.com.ceiba.parking.parking.application.command.handler.RegisterExitHandler;
 import co.com.ceiba.parking.parking.application.consulta.RegisterListHandler;
-import co.com.ceiba.parking.parking.domain.repository.IRegistryRepository;
-import co.com.ceiba.parking.parking.domain.service.RegisterService;
+import co.com.ceiba.parking.parking.domain.repository.IPortRegistryRepository;
+import co.com.ceiba.parking.parking.domain.service.RegisterEntryService;
+import co.com.ceiba.parking.parking.domain.service.RegisterExitService;
+import co.com.ceiba.parking.parking.domain.service.RegisterListService;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
 @Configuration
 public class ConfigurationBean {
     @Bean
-    public RegisterService registerService(IRegistryRepository registryRepository){
-        return new RegisterService(registryRepository);
+    public RegisterEntryHandler registerHandler(RegisterEntryService registerService) {
+        return new RegisterEntryHandler(registerService);
     }
 
     @Bean
-    public RegisterHandler registerHandler(RegisterService registerService) {
-        return new RegisterHandler(registerService);
+    public RegisterEntryService registerService(IPortRegistryRepository registryRepository){
+        return new RegisterEntryService(registryRepository);
     }
 
     @Bean
-    public RegisterListHandler registerListHandler(IRegistryRepository registryRepository) {
-        return new RegisterListHandler(registryRepository);
+    public RegisterListService registerListService(IPortRegistryRepository registryRepository){
+        return new RegisterListService(registryRepository);
+    }
+    @Bean
+    public RegisterListHandler registerListHandler(RegisterListService registerListService) {
+        return new RegisterListHandler(registerListService);
+    }
+
+    @Bean
+    public RegisterExitService registerExitService(IPortRegistryRepository registryRepository){
+        return new RegisterExitService(registryRepository);
+    }
+    @Bean
+    public RegisterExitHandler registerExitHandler(RegisterExitService registerExitService) {
+        return new RegisterExitHandler(registerExitService);
     }
 }

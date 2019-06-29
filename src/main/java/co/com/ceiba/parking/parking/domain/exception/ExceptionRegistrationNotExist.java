@@ -1,9 +1,9 @@
 package co.com.ceiba.parking.parking.domain.exception;
 
-public class ExceptionDisplacementRequired extends RuntimeException {
+public class ExceptionRegistrationNotExist extends RuntimeException {
     private static final long serialVersionUID = 1L;
 
-    public ExceptionDisplacementRequired(String message) {
+    public ExceptionRegistrationNotExist(String message) {
         super(message);
     }
 }

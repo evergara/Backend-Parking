@@ -13,7 +13,7 @@ public class RegistryMapper {
     public Registry convertToDomain(RegistryEntity registryEntity){
         Registry registry;
 
-        if(registryEntity != null){
+        if(registryEntity == null){
             registry = null;
         }
         else{
