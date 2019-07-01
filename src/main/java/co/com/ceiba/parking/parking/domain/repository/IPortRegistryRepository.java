@@ -11,7 +11,7 @@ public interface IPortRegistryRepository {
      *
      * @param  Objeto que tiene la informacion del registro a crear
      */
-     void saveRegistro(Registry registry);
+     Registry saveRegistro(Registry registry);
 
     /**
      * Permite listar los registros de vehiculos

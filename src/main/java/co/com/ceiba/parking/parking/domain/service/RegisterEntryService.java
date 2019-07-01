@@ -20,11 +20,11 @@ public class RegisterEntryService {
         this.registryRepository = registryRepository;
     }
 
-    public void SetEntry(Registry registry){
+    public Registry SetEntry(Registry registry){
         validatePrevious(registry);
         validateAmountvehicleType(registry.getVehicleType());
         validateLicencePlaceDateDay(registry.getLicensePlate(), registry.getDateArrival());
-        this.registryRepository.saveRegistro(registry);
+        return registryRepository.saveRegistro(registry);
     }
 
     private void validateLicencePlaceDateDay(String licensePlate, Date dateArrival) {

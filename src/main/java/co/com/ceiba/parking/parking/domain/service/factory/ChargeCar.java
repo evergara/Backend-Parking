@@ -34,7 +34,7 @@ public class ChargeCar implements IChargeParking {
         }else if(totalHourNewDay == 0 || (totalHourNewDay >= HOURS_CASH_BY_DAY && totalHourNewDay < HOUR_PER_DAY)){
              value = (VALUE_BY_DAY * (totalDay == 0 ? 1:totalDay));
         }else{
-            value = ((VALUE_BY_DAY * totalDay) + (totalHourNewDay * VALUE_BY_DAY));
+            value = ((VALUE_BY_DAY * totalDay) + (totalHourNewDay * VALUE_PER_HOUR));
         }
         registry.setValue(value);
     }

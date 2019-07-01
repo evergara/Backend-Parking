@@ -21,9 +21,9 @@ public class AdapterParkingRepository implements IPortRegistryRepository {
     }
 
     @Override
-    public void saveRegistro(Registry registry) {
+    public Registry saveRegistro(Registry registry) {
         RegistryEntity registryEntity = repositoryParkingJPA.save(registryMapper.convertToEntity(registry));
-        this.registryMapper.convertToDomain(registryEntity);
+        return registryMapper.convertToDomain(registryEntity);
     }
 
     @Override
