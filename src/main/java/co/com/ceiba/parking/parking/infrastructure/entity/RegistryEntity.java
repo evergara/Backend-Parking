@@ -29,10 +29,8 @@ public class RegistryEntity {
     @Column
     private String displacement;
     @Column
-    //@CreatedDate
     private Date dateArrival;
     @Column
-    //@LastModifiedDate
     private Date dateDeparture;
     @Column
     private long value;
