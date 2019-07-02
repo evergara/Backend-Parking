@@ -57,7 +57,7 @@ public class ParkingControllerTest {
     @Test
     public void getOutVehicleTest() throws Exception{
         // Arrange
-        String  licensePlate = "A125";
+        String  licensePlate = "B125";
         // Act y Assert
         mockMvc.perform(put("/Parking/" + licensePlate).contentType(MediaType.APPLICATION_JSON))
                 .andExpect(status().isOk());

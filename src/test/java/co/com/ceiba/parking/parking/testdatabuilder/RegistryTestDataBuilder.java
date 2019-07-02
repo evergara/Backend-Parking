@@ -18,7 +18,7 @@ public class RegistryTestDataBuilder {
     public  RegistryTestDataBuilder(){
         this.id = 1;
         this.vehicleType = "CAR";
-        this.licensePlate = "A25";
+        this.licensePlate = "B25";
         this.displacement = null;
         this.dateArrival = new Date();
         this.dateDeparture = null;

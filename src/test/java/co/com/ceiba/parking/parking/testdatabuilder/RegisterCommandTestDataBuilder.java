@@ -18,7 +18,7 @@ public class RegisterCommandTestDataBuilder {
     public RegisterCommandTestDataBuilder(){
         this.id = 1;
         this.vehicleType = "CAR";
-        this.licensePlate = "A125";
+        this.licensePlate = "B125";
         this.displacement = null;
         this.dateArrival = new Date();
         this.dateDeparture = null;
