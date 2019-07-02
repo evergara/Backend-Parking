@@ -2,11 +2,14 @@ package co.com.ceiba.parking.parking.application.command;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
+import lombok.Setter;
 import lombok.NoArgsConstructor;
 
 import java.io.Serializable;
 import java.util.Date;
+
 @Getter
+@Setter
 @AllArgsConstructor
 @NoArgsConstructor
 public class RegisterCommand implements Serializable {

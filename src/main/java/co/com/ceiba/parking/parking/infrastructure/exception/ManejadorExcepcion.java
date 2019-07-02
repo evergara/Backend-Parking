@@ -12,7 +12,7 @@ import java.util.concurrent.ConcurrentHashMap;
 @ControllerAdvice
 public class ManejadorExcepcion {
 
-    private static final Logger LOGGER_ERROR = LoggerFactory.getLogger(ManejadorExcepcion.class);
+    private static final Logger LOGGER = LoggerFactory.getLogger(ManejadorExcepcion.class);
     private static final String OCURRIO_UN_ERROR_FAVOR_CONTACTAR_AL_ADMINISTRADOR = "Ocurrió un error favor contactar al administrador.";
     private static final ConcurrentHashMap<String, Integer> CODIGOS_ESTADO = new ConcurrentHashMap<>();
 
@@ -37,7 +37,7 @@ public class ManejadorExcepcion {
             ExceptionInfrastucture error = new ExceptionInfrastucture(name, message);
             response = new ResponseEntity<>(error, HttpStatus.valueOf(code));
         } else {
-            LOGGER_ERROR.error(name, exception);
+            LOGGER .error(name, exception);
             ExceptionInfrastucture error = new ExceptionInfrastucture(name, OCURRIO_UN_ERROR_FAVOR_CONTACTAR_AL_ADMINISTRADOR);
             response = new ResponseEntity<>(error, HttpStatus.INTERNAL_SERVER_ERROR);
         }

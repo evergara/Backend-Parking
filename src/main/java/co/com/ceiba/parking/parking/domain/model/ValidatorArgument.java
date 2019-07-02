@@ -2,7 +2,7 @@ package co.com.ceiba.parking.parking.domain.model;
 
 import co.com.ceiba.parking.parking.domain.exception.*;
 
-public class ValidatorArgument {
+public final class ValidatorArgument {
 
     private ValidatorArgument(){}
 

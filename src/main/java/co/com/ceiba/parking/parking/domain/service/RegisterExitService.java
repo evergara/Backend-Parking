@@ -29,7 +29,6 @@ public class RegisterExitService {
     }
 
     private void chargePark(Registry registry) {
-        FactoryChargePark factoryChargePark;
         registry.setDateDeparture(new Date());
         IChargeParking chargePark = FactoryChargePark.getInstance(registry.getVehicleType());
         chargePark.setCharge(registry);

@@ -36,10 +36,10 @@ public class RegistryMapper {
         return registryEntity;
     }
 
-    public List<Registry> listConvertToDomain(List<RegistryEntity> ListRegistryEntity) {
+    public List<Registry> listConvertToDomain(List<RegistryEntity> listRegistryEntity) {
         final List<Registry> listRegistry = new ArrayList<>();
 
-        ListRegistryEntity.forEach(registryEntity -> listRegistry.add(new Registry(registryEntity.getId()
+        listRegistryEntity.forEach(registryEntity -> listRegistry.add(new Registry(registryEntity.getId()
                 ,registryEntity.getVehicleType(),registryEntity.getLicensePlate()
                 ,registryEntity.getDisplacement(),registryEntity.getDateArrival(),registryEntity.getDateDeparture()
                 ,registryEntity.getValue())));
