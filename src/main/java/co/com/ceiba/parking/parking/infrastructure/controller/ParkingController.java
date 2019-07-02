@@ -26,8 +26,8 @@ public class ParkingController {
         this.registerListHandler = registerListHandler;
     }
 
-    @RequestMapping(method= RequestMethod.GET)
-    public List<Registry> List() {
+    @GetMapping
+    public List<Registry> list() {
         return this.registerListHandler.listRegister();
     }
 
@@ -38,6 +38,6 @@ public class ParkingController {
 
     @PutMapping("/{licensePlate}")
     public void getOut(@PathVariable("licensePlate") String licensePlate) {
-        this.registerExitHandler.SetExit(licensePlate);
+        this.registerExitHandler.setExit(licensePlate);
     }
 }

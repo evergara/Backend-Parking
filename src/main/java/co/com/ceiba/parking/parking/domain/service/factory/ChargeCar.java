@@ -14,12 +14,12 @@ public class ChargeCar implements IChargeParking {
 
     @Override
     public void setCharge(Registry registry) {
-        long value = 0;
+        long value;
         double milisegund = (registry.getDateDeparture().getTime() - registry.getDateArrival().getTime());
         double hour = (milisegund/MILISEGUND_PER_HOUR);
         double minute = (milisegund/MILISEGUND_PER_MINUTE);
-        long totalHour = (long) Math.round(hour);
-        long totalMinute = (long) Math.round(minute);
+        long totalHour = Math.round(hour);
+        long totalMinute = Math.round(minute);
         int totalDay = (int)  totalHour / HOUR_PER_DAY;
         int  totalHourNewDay = (int) totalHour % HOUR_PER_DAY;
 
