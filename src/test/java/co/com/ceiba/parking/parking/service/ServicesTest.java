@@ -41,7 +41,7 @@ public class ServicesTest {
         when(portRegistryRepository.saveRegistro(registry)).thenReturn(registry);
 
         //Act
-        Registry registerCopy =  registerEntryService.SetEntry(registry);
+        Registry registerCopy =  registerEntryService.setEntry(registry);
 
         //Assert
         assertEquals(registerCopy.getId(),registry.getId());
@@ -62,7 +62,7 @@ public class ServicesTest {
         when(portRegistryRepository.saveRegistro(registry)).thenReturn(registry);
 
         //Act
-        Registry registerCopy =  registerEntryService.SetEntry(registry);
+        Registry registerCopy =  registerEntryService.setEntry(registry);
 
         //Assert
         assertEquals(registerCopy.getId(),registry.getId());
@@ -84,7 +84,7 @@ public class ServicesTest {
         //Act
 
         try {
-            registerEntryService.SetEntry(registry);
+            registerEntryService.setEntry(registry);
             fail();
         }catch (ExceptionNotSpaceTypeVehicle ex){
             // Assert
@@ -108,7 +108,7 @@ public class ServicesTest {
         //Act
 
         try {
-            registerEntryService.SetEntry(registry);
+            registerEntryService.setEntry(registry);
             fail();
         }catch (ExceptionNotSpaceTypeVehicle ex){
             // Assert
@@ -128,7 +128,7 @@ public class ServicesTest {
         //Act
 
         try {
-            registerEntryService.SetEntry(registry);
+            registerEntryService.setEntry(registry);
             fail();
         }catch (ExceptionLicensePlaceDateDay ex){
             // Assert
@@ -151,7 +151,7 @@ public class ServicesTest {
         //Act
 
         try {
-            registerExitService.SetExit(registry.getLicensePlate());
+            registerExitService.setExit(registry.getLicensePlate());
             fail();
         }catch (ExceptionRegistrationNotExist ex){
             // Assert
@@ -173,7 +173,7 @@ public class ServicesTest {
 
         //Act
         try {
-            registerEntryService.SetEntry(registry);
+            registerEntryService.setEntry(registry);
         }catch (ExceptionDuplicity ex){
             // Assert
             assertEquals(Parametrization.MESSAGE_ALREADY_EXISTS_VEHICLE, ex.getMessage());
@@ -201,7 +201,7 @@ public class ServicesTest {
         when(portRegistryRepository.findByLicensePlate(registry.getLicensePlate())).thenReturn(registry);
 
         //Act
-        registerExitService.SetExit(registry.getLicensePlate());
+        registerExitService.setExit(registry.getLicensePlate());
 
         //Assert
         assertEquals((valueForHour * hour),registry.getValue(),0);
@@ -230,7 +230,7 @@ public class ServicesTest {
         when(portRegistryRepository.findByLicensePlate(registry.getLicensePlate())).thenReturn(registry);
 
         //Act
-        registerExitService.SetExit(registry.getLicensePlate());
+        registerExitService.setExit(registry.getLicensePlate());
 
         //Assert
         assertEquals((valueForHour * hour),registry.getValue(),0);
@@ -261,7 +261,7 @@ public class ServicesTest {
         when(portRegistryRepository.findByLicensePlate(registry.getLicensePlate())).thenReturn(registry);
 
         //Act
-        registerExitService.SetExit(registry.getLicensePlate());
+        registerExitService.setExit(registry.getLicensePlate());
 
         //Assert
         assertEquals((valueForHour * hour)+valueAdictional,registry.getValue(),0);
@@ -289,7 +289,7 @@ public class ServicesTest {
         when(portRegistryRepository.findByLicensePlate(registry.getLicensePlate())).thenReturn(registry);
 
         //Act
-        registerExitService.SetExit(registry.getLicensePlate());
+        registerExitService.setExit(registry.getLicensePlate());
 
         //Assert
         assertEquals(valueDay,registry.getValue(),0);
@@ -320,7 +320,7 @@ public class ServicesTest {
         when(portRegistryRepository.findByLicensePlate(registry.getLicensePlate())).thenReturn(registry);
 
         //Act
-        registerExitService.SetExit(registry.getLicensePlate());
+        registerExitService.setExit(registry.getLicensePlate());
 
         //Assert
         assertEquals(valueDay + valueAdictional,registry.getValue(),0);
@@ -350,7 +350,7 @@ public class ServicesTest {
         when(portRegistryRepository.findByLicensePlate(registry.getLicensePlate())).thenReturn(registry);
 
         //Act
-        registerExitService.SetExit(registry.getLicensePlate());
+        registerExitService.setExit(registry.getLicensePlate());
 
         //Assert
         assertEquals(valueDay,registry.getValue(),0);
@@ -379,7 +379,7 @@ public class ServicesTest {
         when(portRegistryRepository.findByLicensePlate(registry.getLicensePlate())).thenReturn(registry);
 
         //Act
-        registerExitService.SetExit(registry.getLicensePlate());
+        registerExitService.setExit(registry.getLicensePlate());
 
         //Assert
         assertEquals((valueHour * 3) + valueDay,registry.getValue(),0);
@@ -410,7 +410,7 @@ public class ServicesTest {
         when(portRegistryRepository.findByLicensePlate(registry.getLicensePlate())).thenReturn(registry);
 
         //Act
-        registerExitService.SetExit(registry.getLicensePlate());
+        registerExitService.setExit(registry.getLicensePlate());
 
         //Assert
         assertEquals((valueHour * 3) + valueDay,registry.getValue(),0);
