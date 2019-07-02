@@ -13,8 +13,8 @@ public class RegisterEntryHandler {
         this.registerService = registerService;
     }
 
-    public  void SetEntry(RegisterCommand registerCommand){
-        this.registerService.SetEntry(new Registry(registerCommand.getId(), registerCommand.getVehicleType(), registerCommand.getLicensePlate()
+    public  void setEntry(RegisterCommand registerCommand){
+        this.registerService.setEntry(new Registry(registerCommand.getId(), registerCommand.getVehicleType(), registerCommand.getLicensePlate()
                                                    ,registerCommand.getDisplacement(),new Date()
                                                    ,registerCommand.getDateDeparture(),registerCommand.getValue()));
     }

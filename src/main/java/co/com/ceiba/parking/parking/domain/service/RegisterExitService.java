@@ -18,7 +18,7 @@ public class RegisterExitService {
         this.registryRepository = registryRepository;
     }
 
-    public void SetExit(String licensePlate) {
+    public void setExit(String licensePlate) {
         Registry registry = registryRepository.findByLicensePlate(licensePlate);
 
         if (registry == null) {
@@ -31,8 +31,8 @@ public class RegisterExitService {
     private void chargePark(Registry registry) {
         FactoryChargePark factoryChargePark;
         registry.setDateDeparture(new Date());
-        IChargeParking ChargePark = FactoryChargePark.getInstance(registry.getVehicleType());
-        ChargePark.setCharge(registry);
+        IChargeParking chargePark = FactoryChargePark.getInstance(registry.getVehicleType());
+        chargePark.setCharge(registry);
     }
 
 }

@@ -8,10 +8,10 @@ public class FactoryChargePark {
     private FactoryChargePark(){}
 
     public static IChargeParking getInstance(String vehicleType) {
-        if(vehicleType.equalsIgnoreCase("CAR")){
+        if(vehicleType.equalsIgnoreCase(Parametrization.VEHICLETYPE_VALUE_CAR)){
             return  new ChargeCar();
         }
-        else if(vehicleType.equalsIgnoreCase("MOTORCYCLE") ){
+        else if(vehicleType.equalsIgnoreCase(Parametrization.VEHICLETYPE_VALUE_MOTORCYCLE) ){
             return  new ChargeMotorCycle();
         }
         else{

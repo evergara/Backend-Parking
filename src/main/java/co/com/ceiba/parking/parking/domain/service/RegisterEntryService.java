@@ -7,7 +7,6 @@ import co.com.ceiba.parking.parking.domain.model.Registry;
 import co.com.ceiba.parking.parking.domain.repository.IPortRegistryRepository;
 import co.com.ceiba.parking.parking.domain.util.Parametrization;
 
-import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
 
@@ -20,7 +19,7 @@ public class RegisterEntryService {
         this.registryRepository = registryRepository;
     }
 
-    public Registry SetEntry(Registry registry){
+    public Registry setEntry(Registry registry){
         validatePrevious(registry);
         validateAmountvehicleType(registry.getVehicleType());
         validateLicencePlaceDateDay(registry.getLicensePlate(), registry.getDateArrival());

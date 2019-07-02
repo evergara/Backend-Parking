@@ -33,7 +33,7 @@ public class ParkingController {
 
     @PostMapping
     public void getInto(@RequestBody RegisterCommand registerCommand) {
-        this.registerHandler.SetEntry(registerCommand);
+        this.registerHandler.setEntry(registerCommand);
     }
 
     @PutMapping("/{licensePlate}")

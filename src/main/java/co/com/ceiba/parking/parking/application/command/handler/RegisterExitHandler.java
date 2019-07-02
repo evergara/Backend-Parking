@@ -10,7 +10,7 @@ public class RegisterExitHandler {
     }
 
     public  void setExit(String licensePlate){
-        this.registerExitService.SetExit(licensePlate);
+        this.registerExitService.setExit(licensePlate);
     }
 
 }
