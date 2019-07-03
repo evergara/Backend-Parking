@@ -12,7 +12,7 @@ import java.util.Date;
 
 public class RegisterEntryService {
 
-   // Inyeccion de dependencia por contructor
+
     private IPortRegistryRepository registryRepository;
 
     public RegisterEntryService(IPortRegistryRepository registryRepository){
