@@ -4,7 +4,7 @@ import co.com.ceiba.parking.parking.domain.model.Registry;
 
 import java.util.List;
 
-public interface IPortRegistryRepository {
+public interface PortRegistryRepository {
 
     /**
      *Registra el ingreso de un vehiculo

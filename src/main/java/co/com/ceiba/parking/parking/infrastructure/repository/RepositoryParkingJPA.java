@@ -6,7 +6,7 @@ import org.springframework.data.repository.CrudRepository;
 import org.springframework.data.repository.query.Param;
 import java.util.List;
 
-public interface IRepositoryParkingJPA extends CrudRepository<RegistryEntity, Integer> {
+public interface RepositoryParkingJPA extends CrudRepository<RegistryEntity, Integer> {
 
     @Query("SELECT COUNT(id) FROM RegistryEntity r WHERE r.vehicleType = :vehicleType AND r.dateDeparture IS NULL")
     int countVehicleType(@Param("vehicleType") String vehicleType);

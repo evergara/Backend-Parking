@@ -2,7 +2,7 @@ package co.com.ceiba.parking.parking.infrastructure.configuration;
 import co.com.ceiba.parking.parking.application.command.handler.RegisterEntryHandler;
 import co.com.ceiba.parking.parking.application.command.handler.RegisterExitHandler;
 import co.com.ceiba.parking.parking.application.consulta.RegisterListHandler;
-import co.com.ceiba.parking.parking.domain.repository.IPortRegistryRepository;
+import co.com.ceiba.parking.parking.domain.repository.PortRegistryRepository;
 import co.com.ceiba.parking.parking.domain.service.RegisterEntryService;
 import co.com.ceiba.parking.parking.domain.service.RegisterExitService;
 import co.com.ceiba.parking.parking.domain.service.RegisterListService;
@@ -17,12 +17,12 @@ public class ConfigurationBean {
     }
 
     @Bean
-    public RegisterEntryService registerService(IPortRegistryRepository registryRepository){
+    public RegisterEntryService registerService(PortRegistryRepository registryRepository){
         return new RegisterEntryService(registryRepository);
     }
 
     @Bean
-    public RegisterListService registerListService(IPortRegistryRepository registryRepository){
+    public RegisterListService registerListService(PortRegistryRepository registryRepository){
         return new RegisterListService(registryRepository);
     }
     @Bean
@@ -31,7 +31,7 @@ public class ConfigurationBean {
     }
 
     @Bean
-    public RegisterExitService registerExitService(IPortRegistryRepository registryRepository){
+    public RegisterExitService registerExitService(PortRegistryRepository registryRepository){
         return new RegisterExitService(registryRepository);
     }
     @Bean

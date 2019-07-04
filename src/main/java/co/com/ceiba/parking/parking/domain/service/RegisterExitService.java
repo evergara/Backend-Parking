@@ -2,19 +2,19 @@ package co.com.ceiba.parking.parking.domain.service;
 
 import co.com.ceiba.parking.parking.domain.exception.ExceptionRegistrationNotExist;
 import co.com.ceiba.parking.parking.domain.model.Registry;
-import co.com.ceiba.parking.parking.domain.repository.IPortRegistryRepository;
+import co.com.ceiba.parking.parking.domain.repository.PortRegistryRepository;
 import co.com.ceiba.parking.parking.domain.service.factory.FactoryChargePark;
-import co.com.ceiba.parking.parking.domain.service.factory.IChargeParking;
-import co.com.ceiba.parking.parking.domain.util.Parametrization;
+import co.com.ceiba.parking.parking.domain.service.factory.ChargeParking;
+import co.com.ceiba.parking.parking.domain.util.RegistryDomainConstant;
 
 import java.util.Date;
 
 public class RegisterExitService {
 
-    private IPortRegistryRepository registryRepository;
+    private PortRegistryRepository registryRepository;
 
     // Inyeccion de dependencia por contructor
-    public RegisterExitService(IPortRegistryRepository registryRepository){
+    public RegisterExitService(PortRegistryRepository registryRepository){
         this.registryRepository = registryRepository;
     }
 
@@ -22,7 +22,7 @@ public class RegisterExitService {
         Registry registry = registryRepository.findByLicensePlate(licensePlate);
 
         if (registry == null) {
-            throw new ExceptionRegistrationNotExist(Parametrization.MESSAGE_THIS_UNRESOLVED_VEHICLE);
+            throw new ExceptionRegistrationNotExist(RegistryDomainConstant.MESSAGE_THIS_UNRESOLVED_VEHICLE);
         }
         chargePark(registry);
         registryRepository.saveRegistro(registry);
@@ -30,7 +30,7 @@ public class RegisterExitService {
 
     private void chargePark(Registry registry) {
         registry.setDateDeparture(new Date());
-        IChargeParking chargePark = FactoryChargePark.getInstance(registry.getVehicleType());
+        ChargeParking chargePark = FactoryChargePark.getInstance(registry.getVehicleType());
         chargePark.setCharge(registry);
     }
 

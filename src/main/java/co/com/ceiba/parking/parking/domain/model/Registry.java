@@ -1,6 +1,6 @@
 package co.com.ceiba.parking.parking.domain.model;
 
-import co.com.ceiba.parking.parking.domain.util.Parametrization;
+import co.com.ceiba.parking.parking.domain.util.RegistryDomainConstant;
 
 import java.util.Date;
 
@@ -16,15 +16,15 @@ public class Registry {
 
 
     public Registry(Integer id, String vehicleType, String licensePlate, String displacement, Date dateArrival, Date dateDeparture, long value) {
-        ValidatorArgument.validateLicencePlate(licensePlate, Parametrization.MESSAGE_LICENCEPLATE_REQUIRED);
-        ValidatorArgument.validateNullVehicleType(vehicleType, Parametrization. MESSAGE_VEHICLETYPE_REQUIRED);
+        ValidatorArgument.validateLicencePlate(licensePlate, RegistryDomainConstant.MESSAGE_LICENCEPLATE_REQUIRED);
+        ValidatorArgument.validateNullVehicleType(vehicleType, RegistryDomainConstant. MESSAGE_VEHICLETYPE_REQUIRED);
 
-        if(!vehicleType.contentEquals(Parametrization.VEHICLETYPE_VALUE_CAR) && !vehicleType.contentEquals(Parametrization.VEHICLETYPE_VALUE_MOTORCYCLE)) {
-            ValidatorArgument.validateVehicleTypeWrongDate(String.format(Parametrization.MESSAGE_VEHICLETYPE_WRONG_DATA, vehicleType));
+        if(!vehicleType.contentEquals(RegistryDomainConstant.VEHICLETYPE_VALUE_CAR) && !vehicleType.contentEquals(RegistryDomainConstant.VEHICLETYPE_VALUE_MOTORCYCLE)) {
+            ValidatorArgument.validateVehicleTypeWrongDate(String.format(RegistryDomainConstant.MESSAGE_VEHICLETYPE_WRONG_DATA, vehicleType));
         }
-        if (vehicleType.equalsIgnoreCase(Parametrization.VEHICLETYPE_VALUE_MOTORCYCLE)) {
-            ValidatorArgument.validateDisplacementRequired(displacement, Parametrization.MESSAGE_DISPLACEMENT_REQUIRED);
-            ValidatorArgument.validateDisplacementNumber(displacement, Parametrization.MESSAGE_DISPLACEMENT_WRONG_DATA);
+        if (vehicleType.equalsIgnoreCase(RegistryDomainConstant.VEHICLETYPE_VALUE_MOTORCYCLE)) {
+            ValidatorArgument.validateDisplacementRequired(displacement, RegistryDomainConstant.MESSAGE_DISPLACEMENT_REQUIRED);
+            ValidatorArgument.validateDisplacementNumber(displacement, RegistryDomainConstant.MESSAGE_DISPLACEMENT_WRONG_DATA);
         }
 
         this.id = id;

@@ -2,7 +2,7 @@ package co.com.ceiba.parking.parking.domain.service.factory;
 
 import co.com.ceiba.parking.parking.domain.model.Registry;
 
-public class ChargeMotorCycle implements IChargeParking {
+public class ChargeMotorCycle implements ChargeParking {
 
     private static final int HOURS_CASH_BY_DAY = 9;
     private static final int VALUE_PER_HOUR = 500;

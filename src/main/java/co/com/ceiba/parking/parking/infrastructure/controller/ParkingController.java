@@ -12,7 +12,6 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/Parking")
-@CrossOrigin("*")
 public class ParkingController {
 
     private RegisterEntryHandler registerHandler;
@@ -32,12 +31,12 @@ public class ParkingController {
     }
 
     @PostMapping
-    public void getInto(@RequestBody RegisterCommand registerCommand) {
+    public void setEntry(@RequestBody RegisterCommand registerCommand) {
         this.registerHandler.setEntry(registerCommand);
     }
 
     @PutMapping("/{licensePlate}")
-    public void getOut(@PathVariable("licensePlate") String licensePlate) {
+    public void setOutPut(@PathVariable("licensePlate") String licensePlate) {
         this.registerExitHandler.setExit(licensePlate);
     }
 }

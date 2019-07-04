@@ -1,11 +1,9 @@
 package co.com.ceiba.parking.parking.integration;
 
 import co.com.ceiba.parking.parking.application.command.RegisterCommand;
-import co.com.ceiba.parking.parking.domain.model.Registry;
 import co.com.ceiba.parking.parking.infrastructure.controller.ParkingController;
-import co.com.ceiba.parking.parking.infrastructure.exception.ManejadorExcepcion;
+import co.com.ceiba.parking.parking.infrastructure.exception.ExceptionHandler;
 import co.com.ceiba.parking.parking.testdatabuilder.RegisterCommandTestDataBuilder;
-import co.com.ceiba.parking.parking.testdatabuilder.RegistryTestDataBuilder;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -26,14 +24,14 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 public class ParkingControllerTest {
 
     @Autowired
-    private ManejadorExcepcion manejadorExcepcion;
+    private ExceptionHandler exceptionHandler;
     @Autowired
     private ParkingController parkingController;
     private MockMvc mockMvc;
 
     @Before
     public void setupMock() {
-        mockMvc = MockMvcBuilders.standaloneSetup(parkingController, manejadorExcepcion).build();
+        mockMvc = MockMvcBuilders.standaloneSetup(parkingController, exceptionHandler).build();
     }
 
     @Test

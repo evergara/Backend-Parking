@@ -1,21 +1,21 @@
 package co.com.ceiba.parking.parking.domain.service.factory;
 
 import co.com.ceiba.parking.parking.domain.exception.ExceptionVehicleTypeWrongDate;
-import co.com.ceiba.parking.parking.domain.util.Parametrization;
+import co.com.ceiba.parking.parking.domain.util.RegistryDomainConstant;
 
 public final class FactoryChargePark {
 
     private FactoryChargePark(){}
 
-    public static IChargeParking getInstance(String vehicleType) {
-        if(vehicleType.equalsIgnoreCase(Parametrization.VEHICLETYPE_VALUE_CAR)){
+    public static ChargeParking getInstance(String vehicleType) {
+        if(vehicleType.equalsIgnoreCase(RegistryDomainConstant.VEHICLETYPE_VALUE_CAR)){
             return  new ChargeCar();
         }
-        else if(vehicleType.equalsIgnoreCase(Parametrization.VEHICLETYPE_VALUE_MOTORCYCLE) ){
+        else if(vehicleType.equalsIgnoreCase(RegistryDomainConstant.VEHICLETYPE_VALUE_MOTORCYCLE) ){
             return  new ChargeMotorCycle();
         }
         else{
-            throw new ExceptionVehicleTypeWrongDate(String.format(Parametrization.MESSAGE_VEHICLETYPE_WRONG_DATA, vehicleType));
+            throw new ExceptionVehicleTypeWrongDate(String.format(RegistryDomainConstant.MESSAGE_VEHICLETYPE_WRONG_DATA, vehicleType));
         }
     }
 }

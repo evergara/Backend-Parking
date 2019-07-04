@@ -5,10 +5,10 @@ import co.com.ceiba.parking.parking.domain.exception.ExceptionLicensePlaceDateDa
 import co.com.ceiba.parking.parking.domain.exception.ExceptionNotSpaceTypeVehicle;
 import co.com.ceiba.parking.parking.domain.exception.ExceptionRegistrationNotExist;
 import co.com.ceiba.parking.parking.domain.model.Registry;
-import co.com.ceiba.parking.parking.domain.repository.IPortRegistryRepository;
+import co.com.ceiba.parking.parking.domain.repository.PortRegistryRepository;
 import co.com.ceiba.parking.parking.domain.service.RegisterEntryService;
 import co.com.ceiba.parking.parking.domain.service.RegisterExitService;
-import co.com.ceiba.parking.parking.domain.util.Parametrization;
+import co.com.ceiba.parking.parking.domain.util.RegistryDomainConstant;
 import co.com.ceiba.parking.parking.testdatabuilder.RegistryTestDataBuilder;
 import org.junit.Before;
 import org.junit.Test;
@@ -21,18 +21,18 @@ import static org.mockito.Mockito.*;
 
 public class ServicesTest {
 
-    private IPortRegistryRepository portRegistryRepository;
+    private PortRegistryRepository portRegistryRepository;
 
     @Before
     public void StartMocks() {
-        portRegistryRepository = mock(IPortRegistryRepository.class);
+        portRegistryRepository = mock(PortRegistryRepository.class);
     }
 
     @Test
     public void  RegisterCarTest() {
         //Arrange
         RegistryTestDataBuilder register = new RegistryTestDataBuilder()
-                .withVehicleType(Parametrization.VEHICLETYPE_VALUE_CAR);
+                .withVehicleType(RegistryDomainConstant.VEHICLETYPE_VALUE_CAR);
 
         Registry registry = register.build();
 
@@ -52,7 +52,7 @@ public class ServicesTest {
     public void  RegisterMotorbikeTest(){
         //Arrange
         RegistryTestDataBuilder register = new RegistryTestDataBuilder()
-                .withVehicleType(Parametrization.VEHICLETYPE_VALUE_MOTORCYCLE)
+                .withVehicleType(RegistryDomainConstant.VEHICLETYPE_VALUE_MOTORCYCLE)
                 .withDisplacement("500");
 
         Registry registry = register.build();
@@ -73,13 +73,13 @@ public class ServicesTest {
     public void  ParkingWithoutSpaceForCarTest(){
         //Arrange
         RegistryTestDataBuilder register = new RegistryTestDataBuilder()
-                .withVehicleType(Parametrization.VEHICLETYPE_VALUE_CAR);
+                .withVehicleType(RegistryDomainConstant.VEHICLETYPE_VALUE_CAR);
 
         Registry registry = register.build();
 
         RegisterEntryService registerEntryService = new RegisterEntryService(portRegistryRepository);
 
-        when(portRegistryRepository.countVehicleType(Parametrization.VEHICLETYPE_VALUE_CAR)).thenReturn(20);
+        when(portRegistryRepository.countVehicleType(RegistryDomainConstant.VEHICLETYPE_VALUE_CAR)).thenReturn(20);
 
         //Act
 
@@ -88,7 +88,7 @@ public class ServicesTest {
             fail();
         }catch (ExceptionNotSpaceTypeVehicle ex){
             // Assert
-            assertEquals(String.format(Parametrization.MESSAGE_THERE_IS_NOT_SPACE, Parametrization.VEHICLETYPE_VALUE_CAR), ex.getMessage());
+            assertEquals(String.format(RegistryDomainConstant.MESSAGE_THERE_IS_NOT_SPACE, RegistryDomainConstant.VEHICLETYPE_VALUE_CAR), ex.getMessage());
         }
     }
 
@@ -96,14 +96,14 @@ public class ServicesTest {
     public void  ParkingWithoutSpaceForMotorbikeTest(){
 //Arrange
         RegistryTestDataBuilder register = new RegistryTestDataBuilder()
-                .withVehicleType(Parametrization.VEHICLETYPE_VALUE_MOTORCYCLE)
+                .withVehicleType(RegistryDomainConstant.VEHICLETYPE_VALUE_MOTORCYCLE)
                 .withDisplacement("500");
 
         Registry registry = register.build();
 
         RegisterEntryService registerEntryService = new RegisterEntryService(portRegistryRepository);
 
-        when(portRegistryRepository.countVehicleType(Parametrization.VEHICLETYPE_VALUE_MOTORCYCLE)).thenReturn(10);
+        when(portRegistryRepository.countVehicleType(RegistryDomainConstant.VEHICLETYPE_VALUE_MOTORCYCLE)).thenReturn(10);
 
         //Act
 
@@ -112,7 +112,7 @@ public class ServicesTest {
             fail();
         }catch (ExceptionNotSpaceTypeVehicle ex){
             // Assert
-            assertEquals(String.format(Parametrization.MESSAGE_THERE_IS_NOT_SPACE, Parametrization.VEHICLETYPE_VALUE_MOTORCYCLE), ex.getMessage());
+            assertEquals(String.format(RegistryDomainConstant.MESSAGE_THERE_IS_NOT_SPACE, RegistryDomainConstant.VEHICLETYPE_VALUE_MOTORCYCLE), ex.getMessage());
         }
     }
 
@@ -132,7 +132,7 @@ public class ServicesTest {
             fail();
         }catch (ExceptionLicensePlaceDateDay ex){
             // Assert
-            assertEquals(Parametrization.MESSAGE_DAYS_NOT_ALLOWED, ex.getMessage());
+            assertEquals(RegistryDomainConstant.MESSAGE_DAYS_NOT_ALLOWED, ex.getMessage());
         }
     }
 
@@ -140,7 +140,7 @@ public class ServicesTest {
     public void  vehicleDoesNotExistTest(){
        //Arrange
         RegistryTestDataBuilder register = new RegistryTestDataBuilder()
-                .withVehicleType(Parametrization.VEHICLETYPE_VALUE_CAR);
+                .withVehicleType(RegistryDomainConstant.VEHICLETYPE_VALUE_CAR);
 
         Registry registry = register.build();
 
@@ -155,7 +155,7 @@ public class ServicesTest {
             fail();
         }catch (ExceptionRegistrationNotExist ex){
             // Assert
-            assertEquals(Parametrization.MESSAGE_THIS_UNRESOLVED_VEHICLE, ex.getMessage());
+            assertEquals(RegistryDomainConstant.MESSAGE_THIS_UNRESOLVED_VEHICLE, ex.getMessage());
         }
     }
 
@@ -163,7 +163,7 @@ public class ServicesTest {
     public void  RegisterCarExistTest(){
         //Arrange
         RegistryTestDataBuilder register = new RegistryTestDataBuilder()
-                .withVehicleType(Parametrization.VEHICLETYPE_VALUE_CAR);
+                .withVehicleType(RegistryDomainConstant.VEHICLETYPE_VALUE_CAR);
 
         Registry registry = register.build();
 
@@ -174,9 +174,10 @@ public class ServicesTest {
         //Act
         try {
             registerEntryService.setEntry(registry);
+
         }catch (ExceptionDuplicity ex){
             // Assert
-            assertEquals(Parametrization.MESSAGE_ALREADY_EXISTS_VEHICLE, ex.getMessage());
+            assertEquals(RegistryDomainConstant.MESSAGE_ALREADY_EXISTS_VEHICLE, "hola");
         }
     }
 
@@ -191,7 +192,7 @@ public class ServicesTest {
         cal.set(Calendar.HOUR, cal.get(Calendar.HOUR) - hour);
 
         RegistryTestDataBuilder register = new RegistryTestDataBuilder()
-                .withVehicleType(Parametrization.VEHICLETYPE_VALUE_CAR)
+                .withVehicleType(RegistryDomainConstant.VEHICLETYPE_VALUE_CAR)
                 .withDateArrival(cal.getTime());
 
         Registry registry = register.build();
@@ -219,7 +220,7 @@ public class ServicesTest {
         cal.set(Calendar.HOUR, cal.get(Calendar.HOUR) - hour);
 
         RegistryTestDataBuilder register = new RegistryTestDataBuilder()
-                .withVehicleType(Parametrization.VEHICLETYPE_VALUE_MOTORCYCLE)
+                .withVehicleType(RegistryDomainConstant.VEHICLETYPE_VALUE_MOTORCYCLE)
                 .withDateArrival(cal.getTime())
                 .withDisplacement("500");
 
@@ -250,7 +251,7 @@ public class ServicesTest {
         cal.set(Calendar.HOUR, cal.get(Calendar.HOUR) - hour);
 
         RegistryTestDataBuilder register = new RegistryTestDataBuilder()
-                .withVehicleType(Parametrization.VEHICLETYPE_VALUE_MOTORCYCLE)
+                .withVehicleType(RegistryDomainConstant.VEHICLETYPE_VALUE_MOTORCYCLE)
                 .withDateArrival(cal.getTime())
                 .withDisplacement("600");
 
@@ -279,7 +280,7 @@ public class ServicesTest {
         cal.set(Calendar.HOUR, cal.get(Calendar.HOUR) - hour);
 
         RegistryTestDataBuilder register = new RegistryTestDataBuilder()
-                .withVehicleType(Parametrization.VEHICLETYPE_VALUE_CAR)
+                .withVehicleType(RegistryDomainConstant.VEHICLETYPE_VALUE_CAR)
                 .withDateArrival(cal.getTime());
 
         Registry registry = register.build();
@@ -309,7 +310,7 @@ public class ServicesTest {
         cal.set(Calendar.HOUR, cal.get(Calendar.HOUR) - hour);
 
         RegistryTestDataBuilder register = new RegistryTestDataBuilder()
-                .withVehicleType(Parametrization.VEHICLETYPE_VALUE_MOTORCYCLE)
+                .withVehicleType(RegistryDomainConstant.VEHICLETYPE_VALUE_MOTORCYCLE)
                 .withDateArrival(cal.getTime())
                 .withDisplacement("600");
 
@@ -339,7 +340,7 @@ public class ServicesTest {
         cal.set(Calendar.HOUR, cal.get(Calendar.HOUR) - hour);
 
         RegistryTestDataBuilder register = new RegistryTestDataBuilder()
-                .withVehicleType(Parametrization.VEHICLETYPE_VALUE_MOTORCYCLE)
+                .withVehicleType(RegistryDomainConstant.VEHICLETYPE_VALUE_MOTORCYCLE)
                 .withDateArrival(cal.getTime())
                 .withDisplacement("500");
 
@@ -369,7 +370,7 @@ public class ServicesTest {
         cal.set(Calendar.HOUR, cal.get(Calendar.HOUR) - hour);
 
         RegistryTestDataBuilder register = new RegistryTestDataBuilder()
-                .withVehicleType(Parametrization.VEHICLETYPE_VALUE_CAR)
+                .withVehicleType(RegistryDomainConstant.VEHICLETYPE_VALUE_CAR)
                 .withDateArrival(cal.getTime());
 
         Registry registry = register.build();
@@ -399,7 +400,7 @@ public class ServicesTest {
         cal.set(Calendar.HOUR, cal.get(Calendar.HOUR) - hour);
 
         RegistryTestDataBuilder register = new RegistryTestDataBuilder()
-                .withVehicleType(Parametrization.VEHICLETYPE_VALUE_MOTORCYCLE)
+                .withVehicleType(RegistryDomainConstant.VEHICLETYPE_VALUE_MOTORCYCLE)
                 .withDateArrival(cal.getTime())
                 .withDisplacement("500");
 

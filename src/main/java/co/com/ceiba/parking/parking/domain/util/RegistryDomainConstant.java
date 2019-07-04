@@ -1,6 +1,6 @@
 package co.com.ceiba.parking.parking.domain.util;
 
-public final class Parametrization {
+public final class RegistryDomainConstant {
 
     public static final String MESSAGE_LICENCEPLATE_REQUIRED = "La placa es un dato requerido.";
     public static final String MESSAGE_VEHICLETYPE_REQUIRED = "El campo tipo vehiculo es querido.";
@@ -21,5 +21,5 @@ public final class Parametrization {
     public static final int VEHICLETYPE_MAXIMO_CAR = 20;
     public static final int VEHICLETYPE_MAXIMO_MOTORCYCLE = 10;
 
-    private Parametrization(){}
+    private RegistryDomainConstant(){}
 }
