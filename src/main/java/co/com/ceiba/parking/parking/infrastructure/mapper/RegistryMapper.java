@@ -11,28 +11,16 @@ import java.util.List;
 public class RegistryMapper {
 
     public Registry convertToDomain(RegistryEntity registryEntity){
-        Registry registry;
 
-        if(registryEntity == null){
-            registry = null;
-        }
-        else{
-            registry = new Registry(registryEntity.getId(),registryEntity.getVehicleType(),registryEntity.getLicensePlate()
+        Registry registry = new Registry(registryEntity.getId(),registryEntity.getVehicleType(),registryEntity.getLicensePlate()
                     ,registryEntity.getDisplacement(), registryEntity.getDateArrival(), registryEntity.getDateDeparture()
                     ,registryEntity.getValue());
-        }
-
         return  registry;
     }
 
     public RegistryEntity convertToEntity(Registry registry){
-        RegistryEntity registryEntity;
-        if(registry == null){
-            registryEntity = null;
-        }else{
-            registryEntity = new RegistryEntity(registry.getId(),registry.getVehicleType(),registry.getLicensePlate()
+        RegistryEntity registryEntity = new RegistryEntity(registry.getId(),registry.getVehicleType(),registry.getLicensePlate()
                                                 ,registry.getDisplacement(),registry.getDateArrival(),registry.getDateDeparture(), registry.getValue());
-        }
         return registryEntity;
     }
 
