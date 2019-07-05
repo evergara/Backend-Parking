@@ -12,16 +12,15 @@ public class RegistryMapper {
 
     public Registry convertToDomain(RegistryEntity registryEntity){
 
-        Registry registry = new Registry(registryEntity.getId(),registryEntity.getVehicleType(),registryEntity.getLicensePlate()
+        return new Registry(registryEntity.getId(),registryEntity.getVehicleType(),registryEntity.getLicensePlate()
                     ,registryEntity.getDisplacement(), registryEntity.getDateArrival(), registryEntity.getDateDeparture()
                     ,registryEntity.getValue());
-        return  registry;
+
     }
 
     public RegistryEntity convertToEntity(Registry registry){
-        RegistryEntity registryEntity = new RegistryEntity(registry.getId(),registry.getVehicleType(),registry.getLicensePlate()
+        return new RegistryEntity(registry.getId(),registry.getVehicleType(),registry.getLicensePlate()
                                                 ,registry.getDisplacement(),registry.getDateArrival(),registry.getDateDeparture(), registry.getValue());
-        return registryEntity;
     }
 
     public List<Registry> listConvertToDomain(List<RegistryEntity> listRegistryEntity) {
