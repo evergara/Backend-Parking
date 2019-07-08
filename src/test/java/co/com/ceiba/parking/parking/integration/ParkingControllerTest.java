@@ -37,7 +37,7 @@ public class ParkingControllerTest {
     @Test
     public  void listRegisterTest() throws Exception{
         // Arrange , Act y Assert
-      mockMvc.perform(get("/Parking").contentType(MediaType.APPLICATION_JSON)).andExpect(status().isOk());
+      mockMvc.perform(get("/parking").contentType(MediaType.APPLICATION_JSON)).andExpect(status().isOk());
     }
 
     @Test
@@ -47,7 +47,7 @@ public class ParkingControllerTest {
         RegisterCommand registerCommand = registerCommandTestDataBuilder.build();
 
         // Act y Assert
-        mockMvc.perform(post("/Parking").contentType(MediaType.APPLICATION_JSON)
+        mockMvc.perform(post("/parking").contentType(MediaType.APPLICATION_JSON)
                 .content(jsonToString(registerCommand))).andExpect(status().isOk());
 
     }
@@ -57,7 +57,7 @@ public class ParkingControllerTest {
         // Arrange
         String  licensePlate = "B125";
         // Act y Assert
-        mockMvc.perform(put("/Parking/" + licensePlate).contentType(MediaType.APPLICATION_JSON))
+        mockMvc.perform(put("/parking/" + licensePlate).contentType(MediaType.APPLICATION_JSON))
                 .andExpect(status().isOk());
     }
 
