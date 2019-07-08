@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/Parking")
+@RequestMapping("/parking")
 public class ParkingController {
 
     private RegisterEntryHandler registerHandler;
