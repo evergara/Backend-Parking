@@ -40,7 +40,7 @@ public class AdapterParkingRepository implements PortRegistryRepository {
     @Override
     public Registry findByLicensePlate(String licensePlate) {
         RegistryEntity registryEntity = repositoryParkingJPA.findByLicensePlate(licensePlate);
-        return registryMapper.convertToDomain(registryEntity);
+        return registryEntity == null? null : registryMapper.convertToDomain(registryEntity);
     }
 
     @Override
