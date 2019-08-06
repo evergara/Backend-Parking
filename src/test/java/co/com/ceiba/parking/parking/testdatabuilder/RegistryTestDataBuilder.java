@@ -62,4 +62,5 @@ public class RegistryTestDataBuilder {
     public Registry build(){
         return new Registry(id, vehicleType, licensePlate, displacement, dateArrival, dateDeparture, value);
     }
+
 }

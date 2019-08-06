@@ -22,10 +22,13 @@ import static org.mockito.Mockito.*;
 public class ServicesTest {
 
     private PortRegistryRepository portRegistryRepository;
+    private Date fecha;
 
     @Before
     public void StartMocks() {
-        portRegistryRepository = mock(PortRegistryRepository.class);
+        this.portRegistryRepository = mock(PortRegistryRepository.class);
+        this.fecha = Calendar.getInstance().getTime();
+
     }
 
     @Test
