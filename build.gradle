@@ -10,7 +10,13 @@ group = 'co.com.ceiba.parking'
 version = '0.0.1-SNAPSHOT'
 sourceCompatibility = '1.8'
 
+
 configurations {
+	bootJar {
+		extension "jar"
+		baseName "api-parking"
+		archiveName = "$baseName.$extension"
+	}
 	developmentOnly
 	runtimeClasspath {
 		extendsFrom developmentOnly
@@ -37,4 +43,5 @@ dependencies {
 	compile 'org.json:json:20180813'
 	implementation 'io.springfox:springfox-swagger-ui:2.9.2'
 	implementation 'io.springfox:springfox-swagger2:2.9.2'
+	implementation group: 'com.microsoft.azure', name: 'azure-webapp-maven-plugin', version: '0.1.2'
 }

@@ -12,6 +12,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/parking")
+@CrossOrigin(origins = "*", methods= {RequestMethod.GET,RequestMethod.POST})
 public class ParkingController {
 
     private RegisterEntryHandler registerHandler;
